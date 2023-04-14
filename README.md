@@ -29,6 +29,8 @@ The platforms are arranged on eight levels corresponding to the octave of a musi
 The game background has vertical lines that emphasize the beats of a time in 4/4.  
 You must sing the note corresponding to the next platform just before the avatar falls down (so in time with the grid). In the game there are also musical pauses identifiable by the lack of platforms: in this case you have to be silent and wait for the avatar to fly to the next platform to sing.
 
+This release has not been tested for Apple Silicon CPU.
+
 ## How does it work?
 The code is divided into several [modules](https://github.com/jumpapp-repo/jumpapp/blob/master/modulesUML.png) that cooperate together:  
   * PitchDetector
@@ -39,8 +41,6 @@ The code is divided into several [modules](https://github.com/jumpapp-repo/jumpa
 
 The graphics module manages the graphical logic: the creation and movement of the platforms, the displacements of the avatar, the updating of the background based on the change of game levels, the control and management of the game over. The creation of the platforms includes the rhythm module that statistically models the choice of the duration of the notes and the use of the main musical patterns.   
 When the user starts playing, the pitchDetector is listening on the microphone of the device and as soon as a change of pitch is detected it calculates the note detected and sends it to the scaleMapping module which compares the note played with the current musical scale of the game. Then the scaleMapping module sends a message to the graphics module: if the note is part of the scale it sends the platform number to which the avatar should jump, otherwise it sends an error. The graphics module will be able to understand if the avatar can jump on time in the next platform or if it will die.
-
-This release has not been tested for Apple Silicon CPU.
 
 ## External libraries
 For JumpApp development, the following external libraries have been used:
